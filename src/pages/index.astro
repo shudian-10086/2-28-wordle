@@ -1,16 +1,466 @@
-<html>
-  <head>
+<!DOCTYPE html>
+<html lang="en">
+<head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Unlimited Wordle - A word game</title>
-    <style>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+ <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&family=Poppins:wght@300;400;700&display=swap" rel="stylesheet">
+
+<style is:global>
+  body {
+    font-family:'Nunito','Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f7f7f7;
+    color: #333;
+}
+
+  h1,h2,h3 {
+    font-family:'Nunito','Poppins', sans-serif;
+    font-weight:900;
+}
+
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+a {
+   text-decoration: none;
+   color: #333;
+}
+header {
+    background-color: #fff;
+    padding: 10px 0;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header .logo h1{
+    margin: 0;
+    font-size: 1.8em;
+    font-weight: 700;
+}
+header .logo h1 .light{
+  font-weight: 300;
+}
+
+header nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+}
+
+header nav ul li {
+    margin-left: 20px;
+}
+header nav ul li a {
+    color: #555;
+    font-weight: 400;
+}
+
+header .search {
+    display: flex;
+    align-items: center;
+}
+header .search input {
+     padding: 8px;
+    border: 1px solid #ddd;
+    margin-right: 5px;
+     border-radius: 5px;
+}
+header .search input:focus{
+  outline: none;
+    border-color: #007bff;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+header .search button{
+  background-color: #f0c333;
+  border-radius: 5px;
+  padding: 8px 12px;
+  border: none;
+  cursor: pointer;
+}
+header .search button:hover{
+  background-color: #e6b929;
+}
+
+
+/*Hero Section*/
+.hero {
+    padding: 30px 0;
+}
+
+.hero .container {
+     display: flex;
+     justify-content: center;
+}
+
+.game-card {
+  background-color: #fff;
+  padding: 20px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 10px;
+  text-align: center;
+    max-width: 350px;
+    margin: 0 auto;
+
+}
+.game-card .game-image{
+    margin-bottom: 15px;
+}
+.game-card .game-image img{
+    width: 100px;
+    height: 100px;
+}
+
+.game-card h2 {
+    font-size: 1.5em;
+     margin-bottom: 10px;
+}
+.game-card .rating{
+   color: #f0c333;
+}
+.play-button{
+    background-color: #ff5722;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1em;
+    cursor: pointer;
+    border-radius: 5px;
+     margin-top: 15px;
+}
+.play-button:hover{
+  background-color: #e84b1a;
+}
+
+/* Games Section */
+.games{
+    padding: 30px 0;margin-top:5vw;
+}
+.games h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 2em;
+}
+
+.game-grid {
+   display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+     gap: 15px;
+    text-align: center;
+}
+.game {
+   background-color: #fff;
+    padding: 15px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+     border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+   justify-content: space-between;
+}
+
+.game .game-logo{
+  margin-bottom: 10px;
+}
+
+.game .game-logo img {
+    width: 60px;
+    height: 60px;
+    display: block;
+    margin: 0 auto;
+}
+.game button {
+     background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 8px 15px;
+    font-size: 1em;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-top: 10px;
+}
+.game button:hover {
+    background-color: #0056b3;
+}
+
+/* About Section */
+.about{
+  padding: 30px 0;
+}
+.about h2{
+   text-align: center;
+   margin-bottom: 20px;
+   font-size: 2em;
+}
+
+.about-content {
+    background-color: #fff;
+     padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+
+}
+.about-content h3 {
+  font-size: 1.5em;
+  margin-bottom: 10px;
+}
+.about-content h4 {
+    font-size: 1.2em;
+    margin-bottom: 10px;
+}
+
+.about-content .truncate-text {
+
+}
+.about-content .truncate-text-list {
+     padding-left: 20px;
+}
+.about-content .truncate-text-list li {
+    margin-bottom: 5px;
+}
+.about-content .truncate-text:after,
+ .about-content .truncate-text-list:after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 20px; /* Adjust this height as needed */
+}
+
+
+
+/* NYT Answer, Wordleverse, and Puzzle Sections */
+.nyt-answer, .wordleverse, .puzzle {
+    padding: 30px 0;
+    background-color: #fff;
+     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    margin-bottom: 20px;
+    border-radius: 10px;
+}
+
+.nyt-answer .container, .wordleverse .container, .puzzle .container {
+     text-align: center;
+}
+.nyt-answer h2, .wordleverse h2, .puzzle h2 {
+   font-size: 2em;
+  margin-bottom: 10px;
+}
+.nyt-answer p, .wordleverse p, .puzzle p {
+    margin-bottom: 15px;
+}
+
+
+.button-link {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1em;
+    cursor: pointer;
+    border-radius: 5px;
+}
+.button-link:hover {
+    background-color: #0056b3;
+}
+
+/* Related Games Section */
+.related-games {
+    padding: 30px 0;
+}
+.related-games h2{
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 2em;
+}
+.related-grid,.game-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+}
+
+.related-grid .game {
+   background-color: #fff;
+   padding: 15px;
+   box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+   border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+     justify-content: space-between;
+}
+
+.related-grid .game .game-logo {
+   margin-bottom: 10px;
+}
+
+.related-grid .game .game-logo img {
+   width: 70px;
+    height: 70px;
+}
+.related-grid button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 8px 15px;
+    font-size: 1em;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-top: 10px;
+}
+.related-grid button:hover {
+    background-color: #0056b3;
+}
+.more-games {
+     background-color: #4caf50;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1em;
+    cursor: pointer;
+    border-radius: 5px;
+     display: block;
+     margin: 20px auto;
+}
+.more-games:hover{
+  background-color: #419444;
+}
+/* Comments Section */
+.comments {
+    padding: 30px 0;
+}
+.comments h2 {
+    text-align: center;
+     font-size: 2em;
+   margin-bottom: 20px;
+}
+.comments .comment {
+     background-color: #fff;
+    padding: 15px;
+     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+     border-radius: 10px;
+    margin-bottom: 10px;
+}
+.comments .comment .author {
+    font-weight: bold;
+   margin-bottom: 5px;
+}
+.comments .comment .time {
+  font-style: italic;
+   margin-left: 5px;
+    color: #777;
+}
+.comments .comment .actions{
+     display: flex;
+     align-items: center;
+     margin-top: 5px;
+}
+.comments .comment .actions a{
+    margin-right: 10px;
+    color: #007bff;
+}
+.comments .comment .actions img{
+   width: 15px;
+    height: 15px;
+     margin-left: 5px;
+}
+
+.comments .add-comment {
+  background-color: #fff;
+    padding: 15px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    border-radius: 10px;
+}
+
+.comments .add-comment input[type="text"],
+.comments .add-comment input[type="email"]{
+ width: calc(100% - 22px);
+     margin-bottom: 10px;
+    padding: 8px;
+     border: 1px solid #ddd;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+.comments .add-comment input:focus{
+     outline: none;
+    border-color: #007bff;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+/* Footer */
+footer {
+    background-color: #333;
+    color: #fff;
+    padding: 20px 0;
+    text-align: center;
+    width:100%;
+}
+footer .container{
+   display: flex;
+   justify-content: center;
+}
+
+footer nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+}
+footer nav ul li{
+ margin-right: 10px;
+}
+
+footer nav ul li a{
+ color: #fff;
+}
+/*Responsive Styles*/
+@media (max-width: 768px) {
+    header .container {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    header nav ul {
+        flex-direction: column;
+        text-align: center;
+         margin-top: 10px;
+     }
+     header nav ul li {
+         margin: 5px 0;
+     }
+     header .search {
+         margin-top: 10px;
+    }
+      .related-grid, .game-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+</style>
+    <style is:global>
       body {
         display: flex;
         flex-direction: column;
         align-items: center;
         margin: 0;
         width: 100vw;
-        background: #121213;
+        background: #fff;
         font-family: 'Clear Sans', 'Helvetica Neue', Arial, sans-serif;
         color: #d7dadc;
         overflow: auto;
@@ -108,7 +558,7 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        border: solid 2px #3a3a3c;
+        border: solid 2px #dcdcdc;
         width: 58px;
         height: 58px;
         font-size: 2rem;
@@ -442,8 +892,8 @@
         padding: 0 12px;
       }
     </style>
-  </head>
-  <body class="" onload="onInit()">
+</head>
+<body onload="onInit()">
     <div class="header">
       <div class="header-actions">
         <button id="howtoplay"></button>
@@ -455,6 +905,15 @@
       <div class="header-actions">
         <button id="stats"></button>
         <button id="settings"></button>
+  <button 
+    class="icon-button" 
+    title="Restart Game" 
+    onclick="resetGame(true); onClickPlayAgain();"
+  >
+    <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24">
+      <path fill="currentColor" d="M17.65 6.35C16.2 4.9 14.21 4 12 4c-4.42 0-7.99 3.58-7.99 8s3.57 8 7.99 8c3.73 0 6.84-2.55 7.73-6h-2.08c-.82 2.33-3.04 4-5.65 4-3.31 0-6-2.69-6-6s2.69-6 6-6c1.66 0 3.14.69 4.22 1.78L13 11h7V4l-2.35 2.35z"/>
+    </svg>
+  </button>
       </div>
     </div>
     <div class="words"></div>
@@ -518,6 +977,157 @@
       </div>
     </div>
     <div class="backdrop"></div>
-    <script src="/wd.js" is:inline></script>
-  </body>
- </html>
+  <script src="/wd.js" is:inline></script>
+    <main>
+        <section class="games">
+            <div class="container">
+              <h2>Play Different Games</h2>
+                <div class="game-grid">
+                    <div class="game">
+                        <div class="game-logo">
+                            <img src="http://iph.href.lu/100x100?text=Dordle" alt="Phrazle">
+                         </div>
+                        <p>Phrazle</p>
+                        <button>Play</button>
+                    </div>
+                    <div class="game">
+                      <div class="game-logo">
+                        <img src="http://iph.href.lu/100x100?text=Dordle" alt="Spelling Bee">
+                      </div>
+                        <p>Spelling Bee</p>
+                        <button>Play</button>
+                    </div>
+                     <div class="game">
+                       <div class="game-logo">
+                        <img src="http://iph.href.lu/100x100?text=Dordle" alt="Connections NYT">
+                      </div>
+                        <p>Connections NYT</p>
+                        <button>Play</button>
+                    </div>
+                    <div class="game">
+                       <div class="game-logo">
+                         <img src="http://iph.href.lu/100x100?text=Dordle" alt="Waffle">
+                       </div>
+                        <p>Waffle</p>
+                        <button>Play</button>
+                    </div>
+                     <div class="game">
+                        <div class="game-logo">
+                         <img src="http://iph.href.lu/100x100?text=Dordle" alt="Globle">
+                        </div>
+                        <p>Globle</p>
+                        <button>Play</button>
+                    </div>
+                    <div class="game">
+                       <div class="game-logo">
+                          <img src="http://iph.href.lu/100x100?text=Dordle" alt="Flaggle">
+                       </div>
+                        <p>Flaggle</p>
+                        <button>Play</button>
+                    </div>
+                    <div class="game">
+                       <div class="game-logo">
+                          <img src="http://iph.href.lu/100x100?text=Dordle" alt="Foodle">
+                       </div>
+                        <p>Foodle</p>
+                        <button>Play</button>
+                    </div>
+                    <div class="game">
+                        <div class="game-logo">
+                            <img src="http://iph.href.lu/100x100?text=Dordle" alt="2048">
+                         </div>
+                        <p>2048</p>
+                        <button>Play</button>
+                    </div>
+                    <div class="game">
+                       <div class="game-logo">
+                           <img src="http://iph.href.lu/100x100?text=Dordle" alt="Sudoku">
+                       </div>
+                        <p>Sudoku</p>
+                        <button>Play</button>
+                    </div>
+                    <div class="game">
+                         <div class="game-logo">
+                          <img src="http://iph.href.lu/100x100?text=Dordle" alt="Dordle">
+                         </div>
+                        <p>Dordle</p>
+                        <button>Play</button>
+                   </div>
+                </div>
+            </div>
+        </section>
+        
+          <section class="about">
+            <div class="container">
+              <h2>About Connection Game</h2>
+              <div class="about-content">
+                <h3>Connections Unlimited</h3>
+                  <h4>Work Your Brain with This Lovely Word Puzzle!</h4>
+                    <p class="truncate-text">
+                        Connections Game is an intriguing puzzle game in which you rearrange 16 words into groups of four. In order to complete the puzzle, players must find out the connection between certain words. Beware, though; there are words with multiple meanings that can throw you into confusion!
+                    </p>
+                 </div>
+
+                 <div class="about-content">
+                   <h3>Connections Game - a Spiritual Successor to the Popular Game Wordle</h3>
+                     <p class="truncate-text">
+                        If you are a long-time fan of Wordle and just recently discovered Connections Game, chances are that you have noticed how similar yet different these two games are. Both games revolve around words and letters, and the excitement of completing the puzzle is immeasurable. However, the longer you play, the more you notice the distinct characteristics that make Worldle and Connections Game two very different puzzle games.
+                     </p>
+                 </div>
+
+                  <div class="about-content">
+                   <h3>HOW TO PLAY</h3>
+                     <p class="truncate-text">
+                      Upon opening the game, there will be a grid of 4x4, consisting of 16 words in total. The player's role is to find combinations of four words to form a group that shares something in common. A group, or a category, can have different forms, and it's up to the player to deduce the possible category name. Here are examples of categories:
+                     </p>
+                    </div>
+            
+               <div class="about-content">
+                   <h3>RULES</h3>
+                     <ul class="truncate-text-list">
+                        <li> The puzzle is complete after you manage to sort all the words into relevant groups without making more than four mistakes.</li>
+                        <li>Each category can only consist of four words.</li>
+                       </ul>
+                 </div>
+              
+                 <div class="about-content">
+                   <h3>FEATURES</h3>
+                    <ul class="truncate-text-list">
+                       <li>Enrich your vocabulary with this fun puzzle game!</li>
+                       <li>A gentle brain-teaser that requires both logical deduction and creative thinking.</li>
+                    </ul>
+                 </div>
+            
+                 <div class="about-content">
+                   <h3>TIPS AND TRICKS</h3>
+                      <ul class="truncate-text-list">
+                        <li>Begin with monosemous words first: Monosemy refers to words with only one meaning. These words are your best bet if you want to guess a category right.</li>
+                        <li>Connections Game may be tricking you: Sometimes, you can see many words that seem to be in the same category right off the bat. However, it's highly likely that the game is trying to trick you! Check each word carefully to see if it can fit in other categories.</li>
+                      </ul>
+                 </div>
+            
+                 <div class="about-content">
+                   <h3>BENEFITS OF PLAYING CONNECTIONS GAME</h3>
+                     <ul class="truncate-text-list">
+                       <li>A quick brain workout session: Did you know that you have to utilize both halves of the brain to solve Connections Game? The left part of your brain is responsible for analysis and logical thought processes, while the other part is in charge of creative thinking. Puzzle games like Connections Game are best suited for giving your brain exercise.</li>
+                       <li>Delay dementia and Alzheimer's with mental stimulation: Playing Connections Game can help keep your mind active and healthy, which helps reduce the risk of cognitive decline in old age.</li>
+                    </ul>
+                </div>
+
+    </main>
+
+    <footer>
+      <div class="container">
+           <nav>
+               <ul>
+                  <li><a href="#">About Us</a></li>
+                  <li><a href="#">Contact Us</a></li>
+                  <li><a href="#">DMCA</a></li>
+                  <li><a href="#">Privacy Policy</a></li>
+                  <li><a href="#">Terms of Service</a></li>
+                </ul>
+           </nav>
+      </div>
+    </footer>
+</body>
+</html>
