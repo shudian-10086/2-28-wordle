@@ -452,19 +452,7 @@ footer nav ul li a{
         grid-template-columns: repeat(2, 1fr);
     }
 }
-</style>
-    <style is:global>
-      body {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        margin: 0;
-        width: 100vw;
-        background: #fff;
-        font-family: 'Clear Sans', 'Helvetica Neue', Arial, sans-serif;
-        color: #d7dadc;
-        overflow: auto;
-      }
+
       button {
         cursor: pointer;
         outline: none;
@@ -570,16 +558,16 @@ footer nav ul li a{
         margin-right: 5px;
       }
       .letter.correct {
-        background: #538d4e;
-        border-color: #538d4e;
+        background: #6c6c6c;
+        border-color: #6c6c6c;
       }
       .letter.semi {
         background: #b59f3b;
         border-color: #b59f3b;
       }
       .letter.incorrect {
-        background: #3a3a3c;
-        border-color: #3a3a3c;
+        background: #6c6c6c;
+        border-color: #6c6c6c;
       }
       .word:not(.attempted) .letter:not(:empty) {
         border-color: #565758;
@@ -826,7 +814,7 @@ footer nav ul li a{
         bottom: 0;
         left: 15%;
         right: 15%;
-        background: #121213;
+        background: #ffffff;
         opacity: 0;
         pointer-events: none;
         transition: opacity 0.2s ease-in;
@@ -1039,20 +1027,6 @@ footer nav ul li a{
                         <p>2048</p>
                         <button>Play</button>
                     </div>
-                    <div class="game">
-                       <div class="game-logo">
-                           <img src="http://iph.href.lu/100x100?text=Dordle" alt="Sudoku">
-                       </div>
-                        <p>Sudoku</p>
-                        <button>Play</button>
-                    </div>
-                    <div class="game">
-                         <div class="game-logo">
-                          <img src="http://iph.href.lu/100x100?text=Dordle" alt="Dordle">
-                         </div>
-                        <p>Dordle</p>
-                        <button>Play</button>
-                   </div>
                 </div>
             </div>
         </section>
