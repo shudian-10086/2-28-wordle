@@ -162,6 +162,7 @@ header .search button:hover{
   flex-direction: column;
   align-items: center;
    justify-content: space-between;
+   padding-bottom:30px;
 }
 
 .game .game-logo{
